@@ -1,5 +1,9 @@
 
 ### Get all the messages
-GET http://localhost:8080/getpricing/0
+GET http://localhost:8080/getpricing/973
+
 ### Get all RenewalList
 GET http://localhost:8080/renewallist
+
+### Get all Pricing List
+GET http://localhost:8080/getallpricing
