@@ -14,22 +14,24 @@ import org.springframework.web.bind.annotation.*
 class PricingResource(val messageRepository: PricingRepository) {
     @GetMapping("/getpricing/{componentid}")
     fun getComponent(@PathVariable componentid: String): ResponseEntity<List<BenefitComponent>> {
-        val messages = messageRepository.findAllByCOMPONENTID(componentid)
-        if (messages.isEmpty()) {
-            return ResponseEntity.notFound().build()
-        }
-        val components = messages.groupBy { it.COMPONENTID }.map {
-            val (componentId, groupMessages) = it
-            BenefitComponent(
-                groupMessages[0].COMPONENTTYPEID,
-                componentId,
-                groupMessages[0].DESCRIPTION,
-                groupMessages.map { PriceDetails(it.AGEFROM, it.AGETO, it.PRINCIPLE_CHILD, it.SPOUSERATE) }
-            )
-        }
 
-        return ResponseEntity.ok(components)
+        return messageRepository.findAllByCOMPONENTID(componentid).run {
+            if (isEmpty()) {
+                ResponseEntity.notFound().build()
+            } else {
+                ResponseEntity.ok(groupBy { it.COMPONENTID }.map {
+                    val (componentId, groupList) = it
+                    BenefitComponent(
+                        groupList[0].COMPONENTTYPEID,
+                        componentId,
+                        groupList[0].DESCRIPTION,
+                        groupList.map { PriceDetails(it.AGEFROM, it.AGETO, it.PRINCIPLE_CHILD, it.SPOUSERATE) }
+                    )
+                })
+            }
+        }
     }
+
     @GetMapping("/getallpricing")
     fun index(): List<Map<String, Any>> {
         val pricingList = messageRepository.findMessages()

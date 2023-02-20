@@ -1,5 +1,5 @@
 
-### Get all the messages
+### Get all the pricing by BenefitID
 GET http://localhost:8080/getpricing/973
 
 ### Get all RenewalList
