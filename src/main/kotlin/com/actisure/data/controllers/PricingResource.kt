@@ -6,6 +6,7 @@ import com.actisure.data.benefitcomponents.PriceDetails
 import com.actisure.data.controllers.messages.Pricing
 import com.actisure.data.controllers.messages.RenewalList
 import com.actisure.data.services.PricingService
+import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class PricingResource(val messageRepository: PricingRepository) {
     @GetMapping("/getpricing/{componentid}")
+    @ApiOperation(value = "Get the Pricing Values by (Benefit ID)", notes = "This endpoint returns all the Pricing per benefit- All you need to supply is the benefit ID")
     fun getComponent(@PathVariable componentid: String): ResponseEntity<List<BenefitComponent>> {
 
         return messageRepository.findAllByCOMPONENTID(componentid).run {
@@ -33,6 +35,8 @@ class PricingResource(val messageRepository: PricingRepository) {
     }
 
     @GetMapping("/getallpricing")
+    @ApiOperation(value = "Get the Pricing Values for all Applicable Benefits", notes = "This endpoint returns all the Pricing per benefit")
+
     fun index(): List<Map<String, Any>> {
         val pricingList = messageRepository.findMessages()
         val groupedPricing = pricingList.groupBy { it.COMPONENTID }

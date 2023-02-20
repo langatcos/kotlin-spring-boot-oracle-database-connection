@@ -21,12 +21,13 @@ class SwaggerConfig {
             .paths(PathSelectors.any())
             .build()
             .apiInfo(apiInfo())
+
     }
 
     private fun apiInfo(): ApiInfo {
         return ApiInfoBuilder()
-            .title("My API")
-            .description("API documentation for my project")
+            .title("Actisure Additional APIS")
+            .description("Actisure Additional Apis")
             .version("1.0")
             .build()
     }
