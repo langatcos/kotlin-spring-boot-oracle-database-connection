@@ -9,4 +9,4 @@ GET http://localhost:8080/renewallist
 GET http://localhost:8080/getallpricing
 
 ### Get Agent Branch by EntityID
-GET http://localhost:8080/getagentdetails/1644756
+GET http://localhost:8080/getagentdetails/1248136
