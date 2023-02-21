@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class PricingResource(val messageRepository: PricingRepository) {
     @GetMapping("/getpricing/{componentid}")
-    @ApiOperation(value = "Get the Pricing Values by (Benefit ID)", notes = "This endpoint returns all the Pricing per benefit- All you need to supply is the benefit ID")
+    @ApiOperation(value = "Get the Pricing Values by (Benefit ID)", notes = "This endpoint returns all the Pricing per benefit- All you need to supply is the benefit ID otherwise referred to as Componentid")
     fun getComponent(@PathVariable componentid: String): ResponseEntity<List<BenefitComponent>> {
 
         return messageRepository.findAllByCOMPONENTID(componentid).run {
@@ -52,7 +52,7 @@ class PricingResource(val messageRepository: PricingRepository) {
             }
 
             val pricingMap = mapOf(
-                "componenttypeid" to pricings.first().COMPONENTID,
+                "componenttypeid" to pricings.first().COMPONENTTYPEID,
                 "componentid" to componentid,
                 "description" to pricings.first().DESCRIPTION,
                 "priceDetails" to priceDetails

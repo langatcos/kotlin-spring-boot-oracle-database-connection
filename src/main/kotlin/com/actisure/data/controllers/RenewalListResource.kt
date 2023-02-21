@@ -9,5 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class RenewalListResource (val renewal: RenewalListService) {
         @GetMapping("/renewallist")
         @ApiOperation(value = "Get the List of all Policies that are due to renew between last Month and next month (A span of 1 month)", notes = "This endpoint returns all Policies that were/are due to renew in a span of 1 month")
-        fun index(): List<RenewalList> = renewal.listAllPolicies()
+        fun index(): List<RenewalList> {
+                return renewal.listAllPolicies()
+        }
 }
