@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.7.22"
 	kotlin("plugin.spring") version "1.7.22"
 	kotlin("plugin.jpa") version "1.7.22"
+	id ("application")
 }
 
 group = "com.Actisure"
@@ -30,6 +31,7 @@ dependencies {
 	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
 	runtimeOnly("com.oracle.database.jdbc:ojdbc8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
 }
 
 tasks.withType<KotlinCompile> {
@@ -41,4 +43,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks {
+	bootJar {
+		archiveFileName.set("${rootProject.name}.jar")
+	}
 }

@@ -1,6 +1,6 @@
 package com.actisure.data.repositories
 
-import com.actisure.data.controllers.messages.AgentDetails
+import com.actisure.data.controllers.details.AgentDetails
 import org.springframework.data.jdbc.repository.query.Query
 import org.springframework.data.repository.CrudRepository
 

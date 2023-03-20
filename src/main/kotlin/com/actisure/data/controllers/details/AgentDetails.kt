@@ -1,4 +1,4 @@
-package com.actisure.data.controllers.messages
+package com.actisure.data.controllers.details
 
 import org.springframework.data.relational.core.mapping.Table
 import javax.persistence.Id

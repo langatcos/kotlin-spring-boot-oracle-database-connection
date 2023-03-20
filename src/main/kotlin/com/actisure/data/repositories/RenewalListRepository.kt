@@ -1,6 +1,6 @@
 package com.actisure.data.repositories
 
-import com.actisure.data.controllers.messages.RenewalList
+import com.actisure.data.controllers.details.RenewalList
 import org.springframework.data.jdbc.repository.query.Query
 import org.springframework.data.repository.CrudRepository
 

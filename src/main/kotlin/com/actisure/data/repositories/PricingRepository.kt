@@ -1,6 +1,6 @@
 package com.actisure.data.repositories
 
-    import com.actisure.data.controllers.messages.Pricing
+    import com.actisure.data.controllers.details.Pricing
     import org.springframework.data.jdbc.repository.query.Query
     import org.springframework.data.repository.CrudRepository
     import java.util.*
